@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Review from '../Review/Review.js'
 
 class UnderstandingForm extends Component {
 
@@ -20,7 +21,7 @@ class UnderstandingForm extends Component {
     }
 
     handleSubmit = (event) => {
-        const action = { type: 'RATE_BY_NUMBER', payload: this.state.input };
+        const action = { type: 'UPDATE_UNDERSTANDING_RATING', payload: this.state.input };
         this.props.dispatch(action);
         this.setState({
             input: '',
@@ -30,17 +31,17 @@ class UnderstandingForm extends Component {
     render() {
         return (
             <div>
-                <h1>Understanding Form</h1>
+                <h1>Do you feel you are understanding the material?</h1>
                 
                     <select onChange={this.handleChange} value={this.state.input}>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                        <option value="">5</option>
-                    </select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                     <button onClick={this.handleSubmit}>Next</button>
-                
+                <Review/>
             </div>
         );
     }

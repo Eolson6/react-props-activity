@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Review from '../Review/Review.js'
 
 class SubmitForm extends Component {
 
@@ -7,6 +8,7 @@ class SubmitForm extends Component {
         return (
             <div>
                 <h1>Submit Form</h1>
+                <Review />
             </div>
         );
     }

@@ -9,14 +9,42 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const numberRating = (state= [], action) => {
-    if(action.type === 'RATE_BY_NUMBER') {
+const feelingsFeedback = (state= [], action) => {
+    if (action.type === 'UPDATE_FEELINGS_RATING') {
         return action.payload;
     }
+    return state;
 }
+
+
+       const understandingfeedback = (state = [], action) => {
+    if (action.type === 'UPDATE_UNDERSTANDING_RATING') {
+        const understanding = 'understanding' + action.paylod
+        return action.payload
+    }
+    return state;
+}
+
+const supportedFeedback = (state = [], action) => {
+    if (action.type === 'UPDATE_SUPPORTED_RATING') {
+            return action.payload;
+    }
+    return state;
+} 
+
+const commentsFeedback = (state = [], action) => {
+    if (action.type === 'UPDATE_COMMENTS') {
+        return action.payload;
+    }
+    return state;
+} 
 
 const storeInstance = createStore(
     combineReducers({
+        feelingsFeedback,
+        understandingfeedback,
+        supportedFeedback,
+        commentsFeedback
      
     }),
     applyMiddleware(logger),

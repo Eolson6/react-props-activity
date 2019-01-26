@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Review from '../Review/Review.js'
 
 class SupportedForm extends Component {
 
@@ -10,20 +11,38 @@ class SupportedForm extends Component {
         }
     }
 
+    // Function called as the user input changes
+    handleChange = (event) => {
+        console.log(event.target.value);
+        this.setState({
+            input: event.target.value,
+
+        });
+    }
+
+    handleSubmit = (event) => {
+        const action = { type: 'UPDATE_SUPPORTED_RATING', payload: this.state.input };
+        this.props.dispatch(action);
+        this.setState({
+            input: '',
+        });
+        this.props.history.push('commentsform')
+    } 
+
     render() {
         return (
             <div>
-                <h1>Supported Form</h1>
+                <h1>Are you feeling supported?</h1>
 
                 <select onChange={this.handleChange} value={this.state.input}>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
                 <button onClick={this.handleSubmit}>Next</button>
-
+                <Review />
             </div>
         );
     }

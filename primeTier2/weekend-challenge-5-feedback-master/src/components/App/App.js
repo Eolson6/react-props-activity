@@ -8,6 +8,7 @@ import SupportedForm from '../SupportedForm/SupportedForm.js';
 import CommentsForm from '../CommentsForm/CommentsForm.js';
 import SubmitForm from '../SubmitForm/SubmitForm.js';
 import Header from '../Header/Header.js';
+import Review from '../Review/Review.js'
 
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
           <Route exact path="/supportedform" component={SupportedForm} />
           <Route exact path="/commentsform" component={CommentsForm} />
           <Route exact path="/submitform" component={SubmitForm} />
-          <h1>home page</h1>
+          
         </div>
       </Router>
 
