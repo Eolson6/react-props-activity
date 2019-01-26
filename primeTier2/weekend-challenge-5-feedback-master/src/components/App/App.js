@@ -2,17 +2,47 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import FeelingsForm from '../FeelingsForm/FeelingsForm.js';
+import UnderstandingForm from '../UnderstandingForm/UnderstandingForm.js';
+import SupportedForm from '../SupportedForm/SupportedForm.js';
+import CommentsForm from '../CommentsForm/CommentsForm.js';
+import SubmitForm from '../SubmitForm/SubmitForm.js';
+import Header from '../Header/Header.js';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-        </header>
-        <br/>
-      </div>
+      <Router>
+        <div>
+
+          <Header/>
+       
+          <Link to="/feelingsform">Feelings Form</Link>
+          <br></br>
+          <Link to="/understandingform">Understanding Form</Link>
+          <br></br>
+          <Link to="/supportedform">Supported Form</Link>
+          <br></br>
+          <Link to="/commentsform">Comments Form</Link>
+          <br></br>
+          <Link to="/submitform">Submit Form</Link>
+          
+          
+
+          {/* Routes */}
+          
+          <Route exact path="/app" component={App} />
+          <Route exact path="/feelingsForm" component={FeelingsForm} />
+          <Route exact path="/understandingform" component={UnderstandingForm} />
+          <Route exact path="/supportedform" component={SupportedForm} />
+          <Route exact path="/commentsform" component={CommentsForm} />
+          <Route exact path="/submitform" component={SubmitForm} />
+          <h1>home page</h1>
+        </div>
+      </Router>
+
+     
     );
   }
 }
