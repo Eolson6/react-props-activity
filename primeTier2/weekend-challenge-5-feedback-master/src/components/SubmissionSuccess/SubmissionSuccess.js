@@ -11,6 +11,7 @@ class SubmissionSuccess extends Component {
 
             <div>
                 <h1>success!</h1>
+                <h2>Please refresh page to avoid duplicate entries.</h2>
 
 
             </div>
