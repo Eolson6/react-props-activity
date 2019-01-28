@@ -46,6 +46,13 @@ const submissionSuccess = (state = 'false', action) => {
     return state;
 } 
 
+const UserName = (state = '', action) => {
+    if (action.type === 'ADD_USER') {
+        return state;
+    }
+    return state;
+} 
+
 
 const storeInstance = createStore(
     combineReducers({
@@ -53,7 +60,8 @@ const storeInstance = createStore(
         understandingfeedback,
         supportedFeedback,
         commentsFeedback,
-        submissionSuccess
+        submissionSuccess,
+        UserName
      
     }),
     applyMiddleware(logger),

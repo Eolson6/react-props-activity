@@ -39,7 +39,7 @@ class SubmitForm extends Component {
             }).catch((error)=> {
                 alert('error in submission')
             })
-
+            
 
             this.props.history.push('submissionsuccess')
         }
@@ -49,7 +49,10 @@ class SubmitForm extends Component {
     render() {
         return (
             <div>
+                <form className="userInput">
                 <h1>Submit Form</h1>
+                <h2>Please hit submit if everything looks ok.</h2>
+                </form>
                 <Review handleSubmit={this.props.handleSubmit} />
                 <button onClick={this.submit}>submit</button>
             </div>

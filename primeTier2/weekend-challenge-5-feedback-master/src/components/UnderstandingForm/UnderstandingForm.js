@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Review from '../Review/Review.js'
+import Button from '@material-ui/core/Button'
 
 class UnderstandingForm extends Component {
 
@@ -49,7 +50,9 @@ class UnderstandingForm extends Component {
     render() {
         return (
             <div>
+                <form className="userInput">
                 <h1>Do you feel you are understanding the material?</h1>
+                <h2>1 would be the lowest, and 5 is the highest.</h2>
                 
                     <select onChange={this.handleChange} value={this.state.input}>
                     <option value=''>Choose</option>
@@ -59,7 +62,9 @@ class UnderstandingForm extends Component {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                    <button onClick={this.handleNext}>Next</button>
+                
+                <Button variant="contained" color="primary" onClick={this.handleNext}>Next</Button>
+                </form>
                 <Review/>
                 <button onClick={this.handleSubmit}>submit</button>
             </div>

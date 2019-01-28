@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import './App.css';
 import FeelingsForm from '../FeelingsForm/FeelingsForm.js';
 import UnderstandingForm from '../UnderstandingForm/UnderstandingForm.js';
@@ -10,8 +11,22 @@ import SubmitForm from '../SubmitForm/SubmitForm.js';
 import Header from '../Header/Header.js';
 import Review from '../Review/Review.js';
 import SubmissionSuccess from '../SubmissionSuccess/SubmissionSuccess.js'
+import HomePage from '../HomePage/HomePage.js'
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+function MyApp() {
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      {/* The rest of your application */}
+    </React.Fragment>
+  );
+}
 
 class App extends Component {
+
+
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -19,56 +34,66 @@ class App extends Component {
     }
   }
 
-  handleSubmit = (event) => {
-    const action = { type: 'UPDATE_COMMENTS', payload: this.state.input };
-    this.props.dispatch(action);
-    this.setState({
-      input: '',
-      submission: true,
-    });
-    // this.props.history.push('submitform')
-  } 
+ 
 
 
   render() {
+
+    
     return (
+     
+   
+
      
       <Router>
         <div>
+        
           
 
           <Header/>
-          {JSON.stringify(this.state)}
-       
-          <Link to="/feelingsform">Feelings Form</Link>
-          <br></br>
-          <Link to="/understandingform">Understanding Form</Link>
+         
+          {/* {JSON.stringify(this.state)} */}
+          
+        
+       <Link to="/feelingsform">Take me to the First page!</Link>
+       <br></br> 
+          {/* <Link to="/understandingform">Understanding Form</Link>
           <br></br>
           <Link to="/supportedform">Supported Form</Link>
           <br></br>
           <Link to="/commentsform">Comments Form</Link>
           <br></br>
-          <Link to="/submitform">Submit Form</Link>
-          
-          
+          <Link to="/submitform">Submit Form</Link> */}
+         
+           
+        
 
           {/* Routes */}
           
           <Route exact path="/app" component={App} />
-          <Route exact path="/feelingsForm" component={FeelingsForm} />
+          <Route exact path="/feelingsform" component={FeelingsForm} />
           <Route exact path="/understandingform" component={UnderstandingForm} />
           <Route exact path="/supportedform" component={SupportedForm} />
           <Route exact path="/commentsform" component={CommentsForm} />
           <Route exact path="/submitform" component={SubmitForm} />
           <Route exact path="/submissionsuccess" component={SubmissionSuccess} />
-          <Route exact path='/revew' component={Review} />
+          <Route exact path="/revew" component={Review} />
+          <Route exact path="/homepage" component={HomePage} />
+          
+          
           
         </div>
       </Router>
-
+      
      
     );
   }
 }
 
-export default App;
+
+
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState
+});
+
+export default connect(mapReduxStateToProps)(App);

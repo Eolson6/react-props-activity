@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Review from '../Review/Review.js'
+import Button from '@material-ui/core/Button'
 
 class CommentsForm extends Component {
     constructor(props) {
@@ -36,29 +37,19 @@ class CommentsForm extends Component {
     }
 }
     
-    handleSubmit = (event) => {
-        console.log('in review handle submit');
 
-        if (this.props.reduxState.submissionSuccess = 'true') {
-
-
-            this.props.history.push('submissionsuccess')
-        }
-    }
-
-    
 
     render() {
         return (
             <div>
-            <form id="comments">
+            <form className ="userInput">
                 <h1>Comments</h1>
                 <input type="text" value={this.state.input} onChange={this.handleChange} />
-                <button type = "button" onClick={this.handleNext}>Next</button>
+                    <Button variant="contained" color="primary" onClick={this.handleNext}>Next</Button>
             </form>
             
                 <Review />
-                <button onClick={this.handleSubmit}>submit</button>
+                <button onClick={this.handleSubmit}>submit</button>>
                </div>
             
         );
