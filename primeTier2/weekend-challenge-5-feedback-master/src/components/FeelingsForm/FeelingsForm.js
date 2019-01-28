@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Review from '../Review/Review.js'
 import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card';
-import FormControl from '@material-ui/core/FormControl';
-import CssBaseline from '@material-ui/core/CssBaseline';
+
 
  
 class FeelingsForm extends Component {
@@ -16,7 +14,7 @@ class FeelingsForm extends Component {
         }
     }
 
-    // Function called as the user input changes
+    // Function called as user selects feelings rating
     handleChange = (event) => {
         console.log('feelings',event.target.value);
         this.setState({
@@ -25,7 +23,7 @@ class FeelingsForm extends Component {
         });
     }
 
-
+//function called when user hits next
     handleNext = (event) => {
         if (this.state.input != "" || this.state.name != "") {
             const action = { type: 'UPDATE_FEELINGS_RATING', payload: this.state.input };
@@ -39,6 +37,8 @@ class FeelingsForm extends Component {
         }
     }
 
+
+    //function called when user enters name information
     handleNameChange = (event) => {
         console.log('name', event.target.value);
         this.setState({
@@ -47,7 +47,7 @@ class FeelingsForm extends Component {
         });
     }
 
-
+    //function called when user hits login to dispatch user information 
     userLogin = (event) => {
         if (this.state.input != "" || this.state.name != "") {
             const action = { type: 'ADD_USER', payload: this.state.name};
@@ -60,16 +60,25 @@ class FeelingsForm extends Component {
             }
     }
 
+    //function called once user has completed feedback form
+    submit = (event) => {
+        console.log('in review handle submit');
+        const userFeedback = {
+            feeling: this.props.reduxState.feelingsFeedback,
+            understanding: this.props.reduxState.understandingfeedback,
+            support: this.props.reduxState.supportedFeedback,
+            comments: this.props.reduxState.commentsFeedback,
+            name: this.props.reduxState.userName
+        };
+        console.log(userFeedback);
+    }
+
     render() {
         return (
    
-            <Card>
-                <React.Fragment>
-                    <CssBaseline />
-                    {/* The rest of your application */}
-                </React.Fragment>
-        );
-            }
+        
+               
+            
         
             <div>
                     <form className = "userInput">
@@ -78,7 +87,7 @@ class FeelingsForm extends Component {
                 <h1>How are you Feeling?</h1>
                  <h2>1 would be the lowest, and 5 is the highest.</h2>
                 <select onChange={this.handleChange} value={this.state.input}>
-                {JSON.stringify(this.state.input)}
+                {/* {JSON.stringify(this.state.input)} */}
                 <option value=''>Choose</option>
                 <option value="1">1</option>
                     <option value="2">2</option>
@@ -91,7 +100,7 @@ class FeelingsForm extends Component {
                 <Review/>
                 <button onClick={this.handleSubmit}>submit</button>
             </div>
-            </Card>
+            
         );
     }
 }

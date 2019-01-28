@@ -21,7 +21,7 @@ class SupportedForm extends Component {
         });
     }
 
-
+    //function called when user hits next. info is dispatched to redux state
     handleNext = (event) => {
         if (this.state.input != "") {
         const action = { type: 'UPDATE_SUPPORTED_RATING', payload: this.state.input };

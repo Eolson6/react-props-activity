@@ -21,7 +21,7 @@ class UnderstandingForm extends Component {
         });
     }
 
-
+    //function called when user hits next to dispatch info to redux state
     handleNext = (event) => {
         if (this.state.input != "") {
         const action = { type: 'UPDATE_UNDERSTANDING_RATING', payload: this.state.input };
@@ -35,6 +35,8 @@ class UnderstandingForm extends Component {
         }
     }
 
+    //function called when submission sucess state is true
+    //submits info to the database
     HandleSubmit = (event) => {
         console.log('in review handle submit');
 

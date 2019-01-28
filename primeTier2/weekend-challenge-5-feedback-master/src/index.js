@@ -46,9 +46,9 @@ const submissionSuccess = (state = 'false', action) => {
     return state;
 } 
 
-const UserName = (state = '', action) => {
+const userName = (state = '', action) => {
     if (action.type === 'ADD_USER') {
-        return state;
+        return action.payload;
     }
     return state;
 } 
@@ -61,7 +61,7 @@ const storeInstance = createStore(
         supportedFeedback,
         commentsFeedback,
         submissionSuccess,
-        UserName
+        userName
      
     }),
     applyMiddleware(logger),

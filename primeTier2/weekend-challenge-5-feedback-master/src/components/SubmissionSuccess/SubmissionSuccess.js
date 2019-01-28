@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 
 class SubmissionSuccess extends Component {
 
+    
+           
+
     render() {
         return (
+            
             <div>
                 <h1>success!</h1>
+
 
             </div>
 

@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
         feeling,
         understanding,
         support,
-        comments
+        comments,
+        name
 
     } = req.body;
     
@@ -27,10 +28,10 @@ router.post('/', (req, res) => {
     // const userFeedack = req.body;
     
     queryText = `INSERT INTO "feedback"("feeling", 
-                "understanding", "support", "comments")
-                VALUES( $1, $2, $3, $4);`
+                "understanding", "support", "comments", "name")
+                VALUES( $1, $2, $3, $4, $5);`
     pool.query(queryText, [feeling, understanding, 
-                            support, comments])
+                            support, comments, name])
                             .then((databaseresponse) => {
        
         res.sendStatus(201);

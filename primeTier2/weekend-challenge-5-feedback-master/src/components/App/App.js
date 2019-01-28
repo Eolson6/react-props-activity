@@ -25,8 +25,6 @@ function MyApp() {
 
 class App extends Component {
 
-
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -38,17 +36,10 @@ class App extends Component {
 
 
   render() {
-
-    
     return (
-     
-   
-
      
       <Router>
         <div>
-        
-          
 
           <Header/>
          
@@ -56,8 +47,8 @@ class App extends Component {
           
         
        <Link to="/feelingsform">Take me to the First page!</Link>
-       <br></br> 
-          {/* <Link to="/understandingform">Understanding Form</Link>
+       {/* <br></br> 
+           <Link to="/understandingform">Understanding Form</Link>
           <br></br>
           <Link to="/supportedform">Supported Form</Link>
           <br></br>
@@ -65,9 +56,6 @@ class App extends Component {
           <br></br>
           <Link to="/submitform">Submit Form</Link> */}
          
-           
-        
-
           {/* Routes */}
           
           <Route exact path="/app" component={App} />
