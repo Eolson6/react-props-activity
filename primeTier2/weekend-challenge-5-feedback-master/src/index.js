@@ -39,16 +39,27 @@ const commentsFeedback = (state = [], action) => {
     return state;
 } 
 
+const submissionSucess = (state = 'false', action) => {
+    if (action.type === 'UPDATE_COMMENTS') {
+        return true;
+    }
+    return state;
+} 
+
+
 const storeInstance = createStore(
     combineReducers({
         feelingsFeedback,
         understandingfeedback,
         supportedFeedback,
-        commentsFeedback
+        commentsFeedback,
+        submissionSucess
      
     }),
     applyMiddleware(logger),
 );
+
+
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -12,21 +12,26 @@ class FeelingsForm extends Component {
 
     // Function called as the user input changes
     handleChange = (event) => {
-        console.log(event.target.value);
+        console.log('feelings',event.target.value);
         this.setState({
             input: event.target.value,
             
         });
     }
 
-        handleSubmit=(event) => {
+
+    handleSubmit = (event) => {
+        if (this.state.input != "") {
             const action = { type: 'UPDATE_FEELINGS_RATING', payload: this.state.input};
             this.props.dispatch(action);
             this.setState({
                 input: '',
             });
             this.props.history.push('understandingform')
-        } 
+            } else {
+                alert('Please complete section')
+            }
+    }
 
     render() {
         return (
@@ -34,6 +39,7 @@ class FeelingsForm extends Component {
                 <h1>How are you Feeling?</h1>
                 <select onChange={this.handleChange} value={this.state.input}>
                 {JSON.stringify(this.state.input)}
+                <option value=''>Choose</option>
                 <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -42,6 +48,7 @@ class FeelingsForm extends Component {
                 </select>
                 <button onClick={this.handleSubmit}>Next</button>
                 <Review/>
+                <button onClick={this.submit}>submit</button>
             </div>
         );
     }

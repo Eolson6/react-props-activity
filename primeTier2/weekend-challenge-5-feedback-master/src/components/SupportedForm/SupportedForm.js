@@ -13,21 +13,27 @@ class SupportedForm extends Component {
 
     // Function called as the user input changes
     handleChange = (event) => {
-        console.log(event.target.value);
+        console.log('supported', event.target.value);
         this.setState({
             input: event.target.value,
 
         });
     }
 
+
     handleSubmit = (event) => {
+        if (this.state.input != "") {
         const action = { type: 'UPDATE_SUPPORTED_RATING', payload: this.state.input };
         this.props.dispatch(action);
         this.setState({
             input: '',
+            submission: true
         });
         this.props.history.push('commentsform')
-    } 
+        } else {
+            alert('Please complete section')
+        }
+    }
 
     render() {
         return (
@@ -35,6 +41,7 @@ class SupportedForm extends Component {
                 <h1>Are you feeling supported?</h1>
 
                 <select onChange={this.handleChange} value={this.state.input}>
+                    <option value=''>Choose</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

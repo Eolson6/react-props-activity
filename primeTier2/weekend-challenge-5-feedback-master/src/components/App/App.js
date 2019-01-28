@@ -8,16 +8,37 @@ import SupportedForm from '../SupportedForm/SupportedForm.js';
 import CommentsForm from '../CommentsForm/CommentsForm.js';
 import SubmitForm from '../SubmitForm/SubmitForm.js';
 import Header from '../Header/Header.js';
-import Review from '../Review/Review.js'
-
+import Review from '../Review/Review.js';
+import SubmissionSuccess from '../SubmissionSuccess/SubmissionSuccess.js'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      submission: false
+    }
+  }
+
+  handleSubmit = (event) => {
+    const action = { type: 'UPDATE_COMMENTS', payload: this.state.input };
+    this.props.dispatch(action);
+    this.setState({
+      input: '',
+      submission: true,
+    });
+    // this.props.history.push('submitform')
+  } 
+
+
   render() {
     return (
+     
       <Router>
         <div>
+          
 
           <Header/>
+          {JSON.stringify(this.state)}
        
           <Link to="/feelingsform">Feelings Form</Link>
           <br></br>
@@ -39,6 +60,8 @@ class App extends Component {
           <Route exact path="/supportedform" component={SupportedForm} />
           <Route exact path="/commentsform" component={CommentsForm} />
           <Route exact path="/submitform" component={SubmitForm} />
+          <Route exact path="/submissionsuccess" component={SubmissionSuccess} />
+          <Route exact path='/revew' component={Review} />
           
         </div>
       </Router>
