@@ -6,9 +6,9 @@ import axios from 'axios';
 
 class SubmitForm extends Component {
 
-    
-   //function called when user has completed comments section and submission sucess 
-   //state is true information is sent to the database
+
+    //function called when user has completed comments section and submission sucess 
+    //state is true information is sent to the database
 
     submit = (event) => {
         console.log('in review handle submit');
@@ -20,19 +20,19 @@ class SubmitForm extends Component {
             name: this.props.reduxState.userName
         };
         console.log(userFeedback);
-        
+
 
         if (this.props.reduxState.submissionSucess = 'true') {
-            axios ({
+            axios({
                 method: 'POST',
                 url: '/api/feedback',
                 data: userFeedback
             }).then((response) => {
                 this.props.history.push('submissionsuccess')
-            }).catch((error)=> {
+            }).catch((error) => {
                 alert('error in submission')
             })
-            
+
 
             this.props.history.push('submissionsuccess')
         }
@@ -43,8 +43,8 @@ class SubmitForm extends Component {
         return (
             <div>
                 <form className="userInput">
-                <h1>Submit Form</h1>
-                <h2>Please hit submit if everything looks ok. Please Don't forget your name!</h2>
+                    <h1>Submit Form</h1>
+                    <h2>Please hit submit if everything looks ok. Please Don't forget your name!</h2>
                 </form>
                 <Review handleSubmit={this.props.handleSubmit} />
                 <button onClick={this.submit}>submit</button>

@@ -5,13 +5,13 @@ import { withRouter } from 'react-router-dom';
 class SubmitButton extends Component {
 
     //function able to be called once user has completed al the forms
-handleSubmit = (event) => {
-    console.log('in review handle submit');
+    handleSubmit = (event) => {
+        console.log('in review handle submit');
 
-    if (this.props.reduxState.submissionSucess === 'true') {
-        this.props.history.push('/submissionsuccess')
+        if (this.props.reduxState.submissionSucess === 'true') {
+            this.props.history.push('/submissionsuccess')
+        }
     }
-}
 
 
     render() {
