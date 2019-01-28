@@ -21,7 +21,7 @@ class UnderstandingForm extends Component {
     }
 
 
-    handleSubmit = (event) => {
+    handleNext = (event) => {
         if (this.state.input != "") {
         const action = { type: 'UPDATE_UNDERSTANDING_RATING', payload: this.state.input };
         this.props.dispatch(action);
@@ -29,13 +29,15 @@ class UnderstandingForm extends Component {
             input: '',
         });
         this.props.history.push('supportedform');
-    } 
-}
+        } else {
+            alert('Please complete section')
+        }
+    }
 
-    submit = (event) => {
+    HandleSubmit = (event) => {
         console.log('in review handle submit');
 
-        if (this.props.reduxState.submissionSucess = 'true') {
+        if (this.props.reduxState.submissionSucess === 'true') {
 
 
             this.props.history.push('submissionsuccess')
@@ -57,9 +59,9 @@ class UnderstandingForm extends Component {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                    <button onClick={this.handleSubmit}>Next</button>
+                    <button onClick={this.handleNext}>Next</button>
                 <Review/>
-                <button onClick={this.submit}>submit</button>
+                <button onClick={this.handleSubmit}>submit</button>
             </div>
         );
     }

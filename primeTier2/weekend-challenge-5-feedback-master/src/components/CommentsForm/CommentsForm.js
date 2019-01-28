@@ -21,7 +21,7 @@ class CommentsForm extends Component {
     }
 
 
-    handleSubmit = (event) => {
+    handleNext = (event) => {
         if (this.state.input != "") {
         const action = { type: 'UPDATE_COMMENTS', payload: this.state.input };
         this.props.dispatch(action);
@@ -36,10 +36,10 @@ class CommentsForm extends Component {
     }
 }
     
-    submit = (event) => {
+    handleSubmit = (event) => {
         console.log('in review handle submit');
 
-        if (this.props.reduxState.submissionSucess = 'true') {
+        if (this.props.reduxState.submissionSuccess = 'true') {
 
 
             this.props.history.push('submissionsuccess')
@@ -54,11 +54,11 @@ class CommentsForm extends Component {
             <form id="comments">
                 <h1>Comments</h1>
                 <input type="text" value={this.state.input} onChange={this.handleChange} />
-                <button type = "button" onClick={this.handleSubmit}>Next</button>
+                <button type = "button" onClick={this.handleNext}>Next</button>
             </form>
             
                 <Review />
-                <button onClick={this.submit}>submit</button>
+                <button onClick={this.handleSubmit}>submit</button>
                </div>
             
         );

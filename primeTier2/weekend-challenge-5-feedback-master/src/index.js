@@ -39,7 +39,7 @@ const commentsFeedback = (state = [], action) => {
     return state;
 } 
 
-const submissionSucess = (state = 'false', action) => {
+const submissionSuccess = (state = 'false', action) => {
     if (action.type === 'UPDATE_COMMENTS') {
         return true;
     }
@@ -53,7 +53,7 @@ const storeInstance = createStore(
         understandingfeedback,
         supportedFeedback,
         commentsFeedback,
-        submissionSucess
+        submissionSuccess
      
     }),
     applyMiddleware(logger),

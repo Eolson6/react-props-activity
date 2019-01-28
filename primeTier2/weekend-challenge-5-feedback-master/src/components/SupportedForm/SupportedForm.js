@@ -21,7 +21,7 @@ class SupportedForm extends Component {
     }
 
 
-    handleSubmit = (event) => {
+    handleNext = (event) => {
         if (this.state.input != "") {
         const action = { type: 'UPDATE_SUPPORTED_RATING', payload: this.state.input };
         this.props.dispatch(action);
@@ -48,8 +48,9 @@ class SupportedForm extends Component {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <button onClick={this.handleSubmit}>Next</button>
+                <button onClick={this.handleNext}>Next</button>
                 <Review />
+                <button onClick={this.handleSubmit}>submit</button>
             </div>
         );
     }
